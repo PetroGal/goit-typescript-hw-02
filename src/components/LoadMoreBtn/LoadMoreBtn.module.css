@@ -1,0 +1,22 @@
+.button {
+  display: block;
+
+  width: 150px;
+  height: 30px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+
+  color: #ffffff;
+  background-color: #3747ac;
+
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow var(--animation-cubicBezier);
+}
+
+.button:hover,
+.button:focus {
+  box-shadow: var(--shadow-small);
+}

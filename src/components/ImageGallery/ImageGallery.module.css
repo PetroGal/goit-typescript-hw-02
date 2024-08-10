@@ -1,0 +1,37 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+}
+
+.listItem {
+  width: calc((100% - 30px) / 4);
+  height: 230px;
+  overflow: hidden;
+}
+
+.listImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 1200px) {
+  .listItem {
+    width: calc((100% - 20px) / 3);
+  }
+}
+
+@media (max-width: 900px) {
+  .listItem {
+    width: calc((100% - 10px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .listItem {
+    width: 100%;
+  }
+}

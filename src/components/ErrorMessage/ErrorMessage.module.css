@@ -1,0 +1,8 @@
+.messageWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.message {
+  color: red;
+}
