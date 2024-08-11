@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import SearchBar from '../SearchBar/SearchBar.jsx';
-import ImageGallery from '../ImageGallery/ImageGallery.jsx';
-import { getPhotos } from '../../images-api.js';
-import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.jsx';
-import Loader from '../Loader/Loader.jsx';
-import ErrorMessage from '../ErrorMessage/ErrorMessage.jsx';
-import ImageModal from '../ImageModal/ImageModal.jsx';
+import SearchBar from '../SearchBar/SearchBar';
+import { ImageGallery } from '../ImageGallery/ImageGallery';
+import { getPhotos } from '../../images-api';
+import { LoadMoreBtn } from '../LoadMoreBtn/LoadMoreBtn';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { ImageModal } from '../ImageModal/ImageModal';
+import { Image } from '../../types';
 
 export default function App() {
-  const [query, setQuery] = useState('');
-  const [images, setImages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [query, setQuery] = useState<string>('');
+  const [images, setImages] = useState<Image[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [total, setTotal] = useState<number>(0);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (!query) return;
@@ -38,7 +39,7 @@ export default function App() {
     getImages();
   }, [query, page]);
 
-  const handleSubmit = async text => {
+  const handleSubmit = async (text: string) => {
     setQuery(text);
     setPage(1);
     setImages([]);
@@ -49,7 +50,7 @@ export default function App() {
     setPage(page + 1);
   };
 
-  const openModal = photo => {
+  const openModal = (photo: Image) => {
     setSelectedImage(photo);
     setIsModalOpen(true);
   };
